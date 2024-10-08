@@ -1,101 +1,181 @@
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import versace from "@/../public/versace.svg"
+import calvin from "@/../public/calvin.svg"
+import gucci from "@/../public/gucci-logo-1 1.svg"
+import prada from "@/../public/prada-logo-1 1.svg"
+import zara from "@/../public/zara-logo-1 1.svg"
+import ProductCard from "@/components/productCard";
+import ReviewCard from "@/components/ReviewCard";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import * as React from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
+
+import { products } from "@/components/data";
+
+
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+   <div className="bg-slate-50">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <section className="bg-gray-100">
+      <MaxWidthWrapper className="pb-24 pt-10 lg:grid lg:grid-cols-2 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52">
+        <div className="flex">
+          <div>
+            <h1 className="text-5xl font-extrabold mb-5">FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
+            <p className="mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima repudiandae similique, aliquam soluta dolorum beatae fugiat modi nam ullam ipsum!</p>
+
+            <Button>Shop Now</Button>
+
+            <div className="flex gap-6 mt-10">
+              <div>
+                <h3 className="text-2xl font-bold">200+</h3>
+                <p className="text-xs">International Brands</p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold">2,000+</h3>
+                <p className="text-xs">High-Quality Products</p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold">30,000+</h3>
+                <p className="text-xs">Happy Customers</p>
+              </div>
+            </div>
+
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </MaxWidthWrapper>
+    </section>
+
+
+{/*-------------------- Affiliated brand section --------------------------------------- */}
+
+
+    <div className="bg-black py-9">
+      <MaxWidthWrapper className="flex flex-wrap justify-evenly base:gap-y-6">
+        <Image src={versace} alt="verace logo"></Image>
+        <Image src={calvin} alt="calvin logo"></Image>
+        <Image src={gucci} alt="gucci logo"></Image>
+        <Image src={prada} alt="prada logo"></Image>
+        <Image src={zara} alt="zara logo"></Image>
+      </MaxWidthWrapper>
     </div>
+
+
+
+{/*-------------------- New Arrival section --------------------------------------- */}
+
+    <section className="mt-24">
+      <MaxWidthWrapper className="">
+        <h2 className="font-extrabold text-4xl text-center mb-20">NEW ARRIVALS</h2>
+
+        <div className="grid grid-cols-4 gap-4 mb-14">
+
+          {products.map((product)=>{
+             return ( 
+              <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all cursor-pointer">
+                <ProductCard key={product.id} _id={product.id} name={product.name} rating={product.rating} price={product.price} discountedPrice={product.discountedPrice===null? 0 : product.discountedPrice} percentageOff={product.percentageOff===null ? 0 : product.percentageOff} />
+              </div> )
+            })
+          }
+          
+          
+          
+        </div>
+
+        <div className="flex flex-col items-center pb-24 border-b-2">
+          <Button variant="outline" className="w-2/12 max-md:w-4/12 bg-transparent">View All</Button>
+        </div>   
+      </MaxWidthWrapper>
+    </section>
+
+
+    {/*-------------------- Top Selling section --------------------------------------- */}
+
+    <section className="mt-24">
+      <MaxWidthWrapper className="">
+        <h2 className="font-extrabold text-4xl text-center mb-20">TOP SELLING</h2>
+
+        <div className="grid grid-cols-4 gap-4 mb-14">
+        {products.map((product)=>{
+             return ( 
+              <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all cursor-pointer">
+                <ProductCard key={product.id} _id={product.id} name={product.name} rating={product.rating} price={product.price} discountedPrice={product.discountedPrice===null? 0 : product.discountedPrice} percentageOff={product.percentageOff===null ? 0 : product.percentageOff} />
+              </div> )
+            })
+          }  
+        </div>
+
+        <div className="flex flex-col items-center pb-24">
+          <Button variant="outline" className="w-2/12 max-md:w-4/12 bg-transparent">View All</Button>
+        </div>   
+      </MaxWidthWrapper>
+    </section>
+
+
+
+    {/*-------------------- Browse by dress style section --------------------------------------- */}
+
+    <section className="mb-20">
+      <MaxWidthWrapper>
+        <div className="px-6 py-14 bg-gray-100 rounded-3xl">
+          <h2 className="font-extrabold text-4xl text-center mb-14">BROWSE BY DRESS STYLE</h2>  
+          <div className="grid grid-cols-12 grid-rows-12 gap-4">
+            <div className="max-lg:col-span-12 col-span-4 row-span-12 bg-white rounded-xl">1</div>
+            <div className="max-lg:col-span-12 col-span-8 row-span-12 bg-white rounded-xl">2</div>
+            <div className="max-lg:col-span-12 col-span-8 row-span-12 bg-white rounded-xl">3</div>
+            <div className="max-lg:col-span-12 col-span-4 row-span-12 bg-white rounded-xl">4</div>
+          </div>
+        </div> 
+      </MaxWidthWrapper>
+    </section>
+
+
+    {/*-------------------- How Happy Customers section --------------------------------------- */}
+
+    <section className="pb-52 max-lg:pb-64">
+      <MaxWidthWrapper> 
+
+        <Carousel>
+
+          <div className="mb-10 flex justify-between relative items-end">
+            <h2 className="font-extrabold text-4xl">OUR HAPPY CUSTOMER</h2>
+            <div className="flex relative top-3 bg-black right-14">
+              <CarouselPrevious />
+              <CarouselNext />
+            </div>
+          </div>
+
+          <CarouselContent className="-ml-1 flex gap-x-5">
+              <CarouselItem className="pl-1 md:basis-1/2 lg:basis-2/4">     
+                  <ReviewCard />
+              </CarouselItem>
+              <CarouselItem className="pl-1 md:basis-1/2 lg:basis-2/4">     
+                  <ReviewCard />
+              </CarouselItem>
+              <CarouselItem className="pl-1 md:basis-1/2 lg:basis-2/4">     
+                  <ReviewCard />
+              </CarouselItem>
+              <CarouselItem className="pl-1 md:basis-1/2 lg:basis-2/4">     
+                  <ReviewCard />
+              </CarouselItem>
+          </CarouselContent>
+          
+        </Carousel>
+
+      </MaxWidthWrapper>
+    </section>
+
+
+   </div>
   );
 }
