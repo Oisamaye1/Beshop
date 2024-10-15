@@ -20,6 +20,7 @@ import {
 
 
 import { products } from "@/components/data";
+import Link from "next/link";
 
 
 
@@ -83,7 +84,7 @@ export default function Home() {
           {products.map((product)=>{
              return ( 
               <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all cursor-pointer">
-                <ProductCard key={product.id} _id={product.id} name={product.name} rating={product.rating} price={product.price} discountedPrice={product.discountedPrice===null? 0 : product.discountedPrice} percentageOff={product.percentageOff===null ? 0 : product.percentageOff} />
+                <ProductCard key={product.id} id={product.id} name={product.name} rating={product.rating} price={product.price} discountedPrice={product.discountedPrice===null? 0 : product.discountedPrice} percentageOff={product.percentageOff===null ? 0 : product.percentageOff} />
               </div> )
             })
           }
@@ -109,8 +110,10 @@ export default function Home() {
         {products.map((product)=>{
              return ( 
               <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all cursor-pointer">
-                <ProductCard key={product.id} _id={product.id} name={product.name} rating={product.rating} price={product.price} discountedPrice={product.discountedPrice===null? 0 : product.discountedPrice} percentageOff={product.percentageOff===null ? 0 : product.percentageOff} />
-              </div> )
+                <Link href={`/products/${product.id}`}>
+                  <ProductCard key={product.id} id={product.id} name={product.name} rating={product.rating} price={product.price} discountedPrice={product.discountedPrice===null? 0 : product.discountedPrice} percentageOff={product.percentageOff===null ? 0 : product.percentageOff} />
+                </Link>
+                </div> )
             })
           }  
         </div>
