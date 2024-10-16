@@ -35,17 +35,19 @@ const ProductCard = ({key, id, name, rating, price, discountedPrice, percentageO
         <h4 className="text-lg max-lg:text-sm font-bold">{name}</h4>
         <div className="flex gap-3">
             <span className="flex">
-                <Star size={"20px"} color='#ffaa00' />
-                <Star size={"20px"} color='#ffaa00' />
-                <Star size={"20px"} color='#ffaa00' />
-                <Star size={"20px"} color='#ffaa00' />
-                <Star size={"20px"} color='#ffaa00' />
+                <Star size={"20px"} fill='#ffaa00' color='#ffaa00' />
+               
                    
             </span>
             <h3>{rating}/5</h3>
         </div>
-        <h3 className="text-2xl max-lg:text-lg font-extrabold">${price}</h3>
-       
+        {!discountedPrice ?
+        <h3 className="text-2xl max-lg:text-lg font-[700]">${price}</h3> : 
+        <div className='flex items-center gap-2'>
+          <h3 className="text-2xl max-lg:text-lg font-[700]">${discountedPrice} <span className='line-through text-gray-500'>${price}</span></h3>
+          <h3 className='text-red-500 py-1 px-4 bg-red-100 inline rounded-full text-sm'>-{percentageOff}%</h3>
+        </div>
+        }
     </div>
   )
 }
