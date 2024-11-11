@@ -10,6 +10,7 @@ export const products = [
       price: 25.00,
       discountedPrice: null,
       percentageOff: null,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
     },
     {
       id: 2,
@@ -19,6 +20,7 @@ export const products = [
       price: 80.00,
       discountedPrice: 60.00,
       percentageOff: 25,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
     },
     {
       id: 3,
@@ -28,6 +30,7 @@ export const products = [
       price: 45.00,
       discountedPrice: null,
       percentageOff: null,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
     },
     {
       id: 4,
@@ -37,6 +40,7 @@ export const products = [
       price: 150.00,
       discountedPrice: 120.00,
       percentageOff: 20,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
     },
     {
       id: 5,
@@ -46,6 +50,7 @@ export const products = [
       price: 35.00,
       discountedPrice: 28.00,
       percentageOff: 20,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
     },
     {
       id: 6,
@@ -55,6 +60,7 @@ export const products = [
       price: 60.00,
       discountedPrice: null,
       percentageOff: null,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
     },
     {
       id: 7,
@@ -64,6 +70,7 @@ export const products = [
       price: 50.00,
       discountedPrice: 40.00,
       percentageOff: 20,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
     },
     {
       id: 8,
@@ -73,6 +80,7 @@ export const products = [
       price: 70.00,
       discountedPrice: 56.00,
       percentageOff: 20,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
     },
     {
       id: 9,
@@ -82,6 +90,7 @@ export const products = [
       price: 40.00,
       discountedPrice: null,
       percentageOff: null,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
     },
     {
       id: 10,
@@ -91,6 +100,7 @@ export const products = [
       price: 55.00,
       discountedPrice: 44.00,
       percentageOff: 20,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
     },
   ];
   

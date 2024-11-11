@@ -6,6 +6,7 @@ import calvin from "@/../public/calvin.svg"
 import gucci from "@/../public/gucci-logo-1 1.svg"
 import prada from "@/../public/prada-logo-1 1.svg"
 import zara from "@/../public/zara-logo-1 1.svg"
+import hero from "@/../public/hero.png"
 import ProductCard from "@/components/productCard";
 import ReviewCard from "@/components/ReviewCard";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -17,22 +18,23 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-
-
 import { products } from "@/components/data";
 import Link from "next/link";
+import ProductList from "@/components/products";
+
 
 
 
 export default function Home() {
+
   return (
    <div className="bg-slate-50">
 
     <section className="bg-gray-100">
-      <MaxWidthWrapper className="pb-24 pt-10 lg:grid lg:grid-cols-2 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52">
-        <div className="flex">
+      <MaxWidthWrapper className="pb-24 pt-16 md:grid md:grid-cols-12 lg:gap-x-0 xl:gap-x-8 xl:pt-32">
+        <div className="flex lg:col-span-6 max-lg:col-span-12">
           <div>
-            <h1 className="text-5xl font-extrabold mb-5">FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
+            <h1 className="text-[36px] font-[900] mb-5">FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
             <p className="mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima repudiandae similique, aliquam soluta dolorum beatae fugiat modi nam ullam ipsum!</p>
 
             <Button>Shop Now</Button>
@@ -54,6 +56,9 @@ export default function Home() {
 
           </div>
         </div>
+        <div className="lg:col-span-6 max-lg:hidden flex justify-center items-center">
+          <Image src={hero} className="w-[100%]" alt="Hero image"/>
+        </div>
       </MaxWidthWrapper>
     </section>
 
@@ -63,11 +68,11 @@ export default function Home() {
 
     <div className="bg-black py-9">
       <MaxWidthWrapper className="flex flex-wrap justify-evenly base:gap-y-6">
-        <Image src={versace} alt="verace logo"></Image>
-        <Image src={calvin} alt="calvin logo"></Image>
-        <Image src={gucci} alt="gucci logo"></Image>
-        <Image src={prada} alt="prada logo"></Image>
-        <Image src={zara} alt="zara logo"></Image>
+        <Image src={versace} className="max-lg:w-[60px]" alt="verace logo"></Image>
+        <Image src={calvin} className="max-lg:w-[60px]" alt="calvin logo"></Image>
+        <Image src={gucci} className="max-lg:w-[60px]" alt="gucci logo"></Image>
+        <Image src={prada} className="max-lg:w-[60px]" alt="prada logo"></Image>
+        <Image src={zara} className="max-lg:w-[60px]" alt="zara logo"></Image>
       </MaxWidthWrapper>
     </div>
 
@@ -77,24 +82,10 @@ export default function Home() {
 
     <section className="mt-24">
       <MaxWidthWrapper className="">
-        <h2 className="font-extrabold text-4xl text-center mb-20">NEW ARRIVALS</h2>
-
-        <div className="grid grid-cols-4 gap-4 mb-14">
-
-          {products.map((product)=>{
-             return ( 
-              <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all cursor-pointer">
-                <ProductCard key={product.id} id={product.id} name={product.name} rating={product.rating} price={product.price} discountedPrice={product.discountedPrice===null? 0 : product.discountedPrice} percentageOff={product.percentageOff===null ? 0 : product.percentageOff} />
-              </div> )
-            })
-          }
-          
-          
-          
-        </div>
-
-        <div className="flex flex-col items-center pb-24 border-b-2">
-          <Button variant="outline" className="w-2/12 max-md:w-4/12 bg-transparent">View All</Button>
+        <h2 className="font-extrabold text-4xl text-center mb-16">NEW ARRIVALS</h2>
+        <ProductList />
+        <div className="flex flex-col items-center pb-24">
+          <Button asChild variant="outline" className="w-2/12 max-md:w-4/12 bg-transparent"><Link href={'/products'}>View All</Link></Button>
         </div>   
       </MaxWidthWrapper>
     </section>
@@ -104,22 +95,10 @@ export default function Home() {
 
     <section className="mt-24">
       <MaxWidthWrapper className="">
-        <h2 className="font-extrabold text-4xl text-center mb-20">TOP SELLING</h2>
-
-        <div className="grid grid-cols-4 gap-4 mb-14">
-        {products.map((product)=>{
-             return ( 
-              <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all cursor-pointer">
-                <Link href={`/products/${product.id}`}>
-                  <ProductCard key={product.id} id={product.id} name={product.name} rating={product.rating} price={product.price} discountedPrice={product.discountedPrice===null? 0 : product.discountedPrice} percentageOff={product.percentageOff===null ? 0 : product.percentageOff} />
-                </Link>
-                </div> )
-            })
-          }  
-        </div>
-
+        <h2 className="font-extrabold text-4xl text-center mb-16">TOP SELLING</h2>
+          <ProductList />
         <div className="flex flex-col items-center pb-24">
-          <Button variant="outline" className="w-2/12 max-md:w-4/12 bg-transparent">View All</Button>
+          <Button asChild variant="outline" className="w-2/12 max-md:w-4/12 bg-transparent"><Link href={'/products'}>View All</Link></Button>
         </div>   
       </MaxWidthWrapper>
     </section>
