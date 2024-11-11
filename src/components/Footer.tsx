@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <section className='bg-slate-200'>
 
-      <MaxWidthWrapper className=''>
+      <MaxWidthWrapper >
         <div className='bg-black text-white py-20 px-10 grid grid-cols-5 items-center lg:gap-6 max-lg:gap-y-6 relative -top-32 max-lg:-top-48 rounded-3xl'>
             <h2 className='text-4xl font-extrabold col-span-3 max-lg:col-span-5'>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
 
@@ -25,17 +25,17 @@ const Footer = () => {
     <div className='flex flex-col gap-y-4 col-span-4 max-lg:col-span-12 pr-5'>
         <h2 className='text-3xl font-extrabold'>BESHOP</h2>
         <p className='text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus assumenda iusto omnis!</p>
-        <div className='flex gap-x-4'>
-        <Twitter color="#737373" strokeWidth={3} absoluteStrokeWidth />
-        <Facebook color="#737373" strokeWidth={3} absoluteStrokeWidth />
-        <Instagram color="#737373" strokeWidth={3} absoluteStrokeWidth />
-        <Github color="#737373" strokeWidth={3} absoluteStrokeWidth />
+        <div className='flex gap-x-4 hoverscale-105'>
+        <Twitter color="#737373" className='hover:scale-105 cursor-pointer' strokeWidth={2} absoluteStrokeWidth />
+        <Facebook color="#737373" className='hover:scale-105 cursor-pointer' strokeWidth={2} absoluteStrokeWidth />
+        <Instagram color="#737373" className='hover:scale-105 cursor-pointer' strokeWidth={2} absoluteStrokeWidth />
+        <Github color="#737373" className='hover:scale-105 cursor-pointer' strokeWidth={2} absoluteStrokeWidth />
         </div>
     </div>
 
-    <div className='flex flex-col gap-y-4 col-span-2 max-lg:col-span-6'>
-        <h4 className='text-xl text-gray-800 font-medium'>COMPANY</h4>
-        <ul className='flex flex-col gap-y-4 text-gray-500'>
+    <div className='flex flex-col gap-y-4 col-span-2 max-lg:col-span-3'>
+        <h4 className='max-lg:text-sm text-xl text-gray-800 font-bold'>COMPANY</h4>
+        <ul className='flex flex-col gap-y-4 text-gray-500 max-lg:text-[12px]'>
             <Link href={"#"}><li>About</li></Link>
             <Link href={"#"}><li>Feature</li></Link>
             <Link href={"#"}><li>Work</li></Link>
@@ -44,9 +44,9 @@ const Footer = () => {
         
     </div>
 
-    <div className='flex flex-col gap-y-4 col-span-2 max-lg:col-span-6'>
-        <h4 className='text-xl text-gray-800 font-medium'>HELP</h4>
-        <ul className='flex flex-col gap-y-4 text-gray-500'>
+    <div className='flex flex-col gap-y-4 col-span-2 max-lg:col-span-3'>
+        <h4 className='max-lg:text-sm text-xl text-gray-800 font-bold'>HELP</h4>
+        <ul className='flex flex-col gap-y-4 text-gray-500 max-lg:text-[12px]'>
             <Link href={"#"}><li>About</li></Link>
             <Link href={"#"}><li>Feature</li></Link>
             <Link href={"#"}><li>Work</li></Link>
@@ -55,9 +55,9 @@ const Footer = () => {
         
     </div>
 
-    <div className='flex flex-col gap-y-4 col-span-2 max-lg:col-span-6'>
-        <h4 className='text-xl text-gray-800 font-medium'>FAQ</h4>
-        <ul className='flex flex-col gap-y-4 text-gray-500'>
+    <div className='flex flex-col gap-y-4 col-span-2 max-lg:col-span-3'>
+        <h4 className='max-lg:text-sm text-xl text-gray-800 font-bold'>FAQ</h4>
+        <ul className='flex flex-col gap-y-4 text-gray-500 max-lg:text-[12px]'>
             <Link href={"#"}><li>About</li></Link>
             <Link href={"#"}><li>Feature</li></Link>
             <Link href={"#"}><li>Work</li></Link>
@@ -66,9 +66,9 @@ const Footer = () => {
     
     </div>
 
-    <div className='flex flex-col gap-y-4 col-span-2 max-lg:col-span-6'>
-        <h4 className='text-xl text-gray-800 font-medium'>RESOURCES</h4>
-        <ul className='flex flex-col gap-y-4 text-gray-500'>
+    <div className='flex flex-col gap-y-4 col-span-2 max-lg:col-span-3'>
+        <h4 className='max-lg:text-sm text-xl text-gray-800 font-bold'>RESOURCES</h4>
+        <ul className='flex flex-col gap-y-4 text-gray-500 max-lg:text-[12px]'>
             <Link href={"#"}><li>About</li></Link>
             <Link href={"#"}><li>Feature</li></Link>
             <Link href={"#"}><li>Work</li></Link>
