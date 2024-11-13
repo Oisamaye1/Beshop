@@ -83,11 +83,11 @@ interface Product {
     <div className="grid grid-cols-4 gap-4 mb-14">
     {products.filter((item, index) => index < 12).map((product)=>(
         
-        <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all bg-white p-4 rounded-lg cursor-pointer">
+        <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all bg-white shadow-sm border border-slate-200 rounded-lg p-4 cursor-pointer">
           <Link href={`/products/${product.id}`}>
-            <div className='flex flex-col gap-y-2 max-lg:gap-y-1'>
-                <div className='w-full'>
-                    <img src={product.image} alt={product.title} width={100} className='w-[100%]' height={100} />
+            <div className='flex flex-col gap-y-2 max-lg:gap-y-1 items-end'>
+                <div className='w-[100%]'>
+                    <img src={product.image} alt={product.title} className='size-full' />
                 </div>
                 <ProductCard key={product.id} id={product.id} title={product.title} price={product.price}/>
             </div>
