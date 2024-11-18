@@ -20,11 +20,14 @@ import {
 const SHEET_SIDES = ["left"] as const
  
 type SheetSide = (typeof SHEET_SIDES)[number]
+async function getCategories() {
+  return ["tv", "audio", "laptop", "mobile", "gaming", "appliances"];
+}
 
 
 
-const Navbar = () => {
-
+export default async function Navbar() {
+  const categories = await getCategories();
 
   return (
     <div className="bg-white py-5 sticky top-0 z-50 ">
@@ -37,36 +40,8 @@ const Navbar = () => {
 
               <div className="text-slate-600 text-base col-span-5 flex justify-center">
                 <ul className="flex gap-8 lg:gap-4 items-center max-lg:hidden">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger className='bg-transparent shadow-none' asChild>
-                    <Link href="#" className='flex gap-1 items-center'><li>Shop</li><ChevronDown size={20}/></Link>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56 text-center">
-                      <DropdownMenuGroup>
-
-                        <DropdownMenuItem>
-                          <span>Brand</span>  
-                        </DropdownMenuItem>
-
-                        <DropdownMenuItem>
-                          <span>Categories</span>
-                        </DropdownMenuItem>
-
-                        <DropdownMenuItem>
-                          <span>Just for you</span>
-                        </DropdownMenuItem>
-
-                        <DropdownMenuItem>
-                          <span>Best value</span>
-                        </DropdownMenuItem>
-
-                      </DropdownMenuGroup>
-
-                    
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                  <Link href="#"><li>On Sale</li></Link>
-                  <Link href="#"><li>New Arrival</li></Link>
+                  <Link href="/onsale"><li>On Sale</li></Link>
+                  <Link href="/popular"><li>Popular</li></Link>
                   <Link href="#"><li>Brands</li></Link>
                 </ul>
               </div>
@@ -77,7 +52,7 @@ const Navbar = () => {
               </div>
               
               <div className="flex gap-4 col-span-1 items-center justify-end">
-                <ShoppingCart />
+                <Link href={'/cart'}><ShoppingCart /></Link>
                 <DropdownMenu>
                 <DropdownMenuTrigger><CircleUserRound /></DropdownMenuTrigger>
                 <DropdownMenuContent>
@@ -187,9 +162,3 @@ const Navbar = () => {
     </div>
   )
 }
-
-
-
-
-
-export default Navbar

@@ -15,6 +15,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import ReviewCard from '@/components/ReviewCard'
 import { Skeleton } from '@/components/ui/skeleton'
+import ProductFilter from '@/components/categories-link'
+import Loader from '@/components/loader'
 
 
 
@@ -24,13 +26,21 @@ interface Product {
     image: string;
     price: number;
     description: string;
+    brand?: string;
+    model?: string;
+    color?: string;
+    category?: string;
+    popular?: string;
     discount?: number;
   }
 
 
+
+
 const ProductUI = () => {
-    const params = useParams();
-    const {id} = params;
+  const params = useParams();
+  const {id} = params;
+
 
     const [quantity, quantityState] = useState(0);
 
@@ -46,6 +56,38 @@ const ProductUI = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+
+
+       // State to hold the array of numbers
+       const [numbers, setNumbers] = useState<string[]>([]);
+
+
+       // Load numbers from localStorage on initial render
+       useEffect(() => {
+       const storedNumbers = localStorage.getItem("numbers");
+       if (storedNumbers) {
+         setNumbers(JSON.parse(storedNumbers)); // Parse the stringified array
+       }
+       console.log(storedNumbers)
+       }, []);
+   
+       // Save numbers to localStorage whenever they change
+       useEffect(() => {
+       localStorage.setItem("numbers", JSON.stringify(numbers));
+       }, [numbers]);
+   
+       const GetNewNumberAsString = (): string => {
+         const number = id;
+         console.log(number.toString()) 
+         return number.toString();
+       };
+
+       const addNumber = () => {
+        const newNumber = GetNewNumberAsString(); // Get a new number (as a string) from the external file
+        setNumbers([...numbers, newNumber]); // Add the new string number to the array
+        };
+    
+       
   
     useEffect(() => {
       const fetchProducts = async () => {
@@ -71,53 +113,24 @@ const ProductUI = () => {
     }, []);
   
     if (loading) return(
-      <div className="grid grid-cols-12 justify-between items-center mb-10 gap-2 ">
-
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-       
-        
-      </div>
+      <Loader/>
     );
     if (error) return <p>Error: {error}</p>;
 
 
+     
+
+  
 
 
   return (
-    <div className=''>
-    {/* ------------Product details section ---------*/}
-    <section className='mt-20 '>
+    <div className='bg-slate-50 pb-52 max-lg:pb-64'>
+
+    <section className='py-32 bg-white'>
         <MaxWidthWrapper>
             {
                 products.map((product)=>{
-
+                  
                     if (!product) return <p>Product not found</p>;
                     return(
 
@@ -130,8 +143,8 @@ const ProductUI = () => {
                             </div>
 
                             <div className='col-span-1 max-lg:col-span-2'>
-                                <h2 className='font-extrabold text-[25px] mb-8'>{product.title}</h2>
-                                <h3 className='mt-3 text-5xl font-semibold mb-8 max-md:text-3xl'>${product.price} </h3>
+                                <h2 className='font-[700] text-[24px] mb-6'>{product.title}</h2>
+                                <h3 className='mt-3 text-3xl font-extrabold mb-8'>${product.price} </h3>
 
                             <hr/>
 
@@ -155,7 +168,7 @@ const ProductUI = () => {
                                 <h4>{quantity}</h4>
                                 <Plus className='cursor-pointer' onClick={addQuantity}/>
                                 </div>
-                                <Button className='col-span-2 h-12 rounded-full'>Add to Cart</Button>
+                                <Button className='col-span-2 h-12 rounded-full' onClick={addNumber} >Add to Cart</Button>
                             </div>
 
 
@@ -189,8 +202,10 @@ const ProductUI = () => {
     
                     <TabsContent value="product details">
                         <div className='py-6'>
-                            <h4 className='text-lg font-[600] mb-4'>{product.title}</h4>
-                            <p className='text-sm font-normal text-gray-500'>{product.description}</p>
+                            <h4  className='text-lg font-[600] mb-3'>{product.title}</h4>
+                            <h5 className='text-lg font-[600] mb-3'>{product.brand}</h5>
+                            <h5 className='text-lg font-[600] mb-3'>{product.color}</h5>
+                            <p className='text-sm font-normal text-gray-500 text-justify'>{product.description}</p>
                         </div>
                     </TabsContent>
     
@@ -231,29 +246,12 @@ const ProductUI = () => {
 
     {/* ------------You may also like ---------*/}
 
-    <section className="mt-24 mb-72 max-lg:mb-56">
-      <MaxWidthWrapper className="">
-        <h2 className="font-extrabold text-4xl text-center max-lg:text-3xl mb-20">YOU MAY ALSO LIKE</h2>
-
-        <div className="grid grid-cols-4 gap-4 mb-14">
-            {products.filter((item, index) => index < 12).map((product)=>(
-            
-            <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all bg-white p-4 rounded-lg cursor-pointer">
-                <Link href={`/products/${product.id}`}>
-                    <div className='flex flex-col gap-y-2 max-lg:gap-y-1'>
-                        <div className='w-full'>
-                            <img src={product.image} alt={product.title} width={100} className='w-[100%]' height={100} />
-                        </div>
-                        <ProductCard key={product.id} id={product.id} title={product.title} price={product.price}/>
-                    </div>
-                </Link>
-            </div>
-            ))}
-        </div>    
-      </MaxWidthWrapper>
-    </section>
+    <div className='mt-20'>
+      <ProductFilter />
+    </div>
     </div>
   )
 }
 
-export default ProductUI
+
+export  default ProductUI

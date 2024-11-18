@@ -1,3 +1,4 @@
+
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -7,6 +8,12 @@ import gucci from "@/../public/gucci-logo-1 1.svg"
 import prada from "@/../public/prada-logo-1 1.svg"
 import zara from "@/../public/zara-logo-1 1.svg"
 import hero from "@/../public/hero.png"
+import tv from "@/../public/television.jpg"
+import appliances from "@/../public/home.jpg"
+import laptop from "@/../public/laptop.jpg"
+import mobile from "@/../public/phone.jpg"
+import gaming from "@/../public/gaming.jpg"
+import audio from "@/../public/audio.jpg"
 import ProductCard from "@/components/productCard";
 import ReviewCard from "@/components/ReviewCard";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -21,12 +28,22 @@ import {
 import { products } from "@/components/data";
 import Link from "next/link";
 import ProductList from "@/components/products";
+import { Skeleton } from "@/components/ui/skeleton";
+import CategoryLinks from "@/components/categories-link";
+import PopularProductsUI from "./popular/PopularUI";
+
+
+async function getCategories() {
+  return ["tv", "audio", "laptop", "mobile", "gaming", "appliances"];
+}
+
+const images = [tv, audio, laptop, mobile, gaming, appliances];
 
 
 
-
-export default function Home() {
-
+export default async function Home() {
+  const categories = await getCategories();
+  
   return (
    <div className="bg-slate-50">
 
@@ -94,28 +111,38 @@ export default function Home() {
     {/*-------------------- Top Selling section --------------------------------------- */}
 
     <section className="mt-24">
-      <MaxWidthWrapper className="">
+      
         <h2 className="font-extrabold text-4xl text-center mb-16">TOP SELLING</h2>
-          <ProductList />
+          <PopularProductsUI />
         <div className="flex flex-col items-center pb-24">
           <Button asChild variant="outline" className="w-2/12 max-md:w-4/12 bg-transparent"><Link href={'/products'}>View All</Link></Button>
         </div>   
-      </MaxWidthWrapper>
+     
     </section>
 
 
 
-    {/*-------------------- Browse by dress style section --------------------------------------- */}
+    {/*-------------------- Browse by Categories --------------------------------------- */}
 
     <section className="mb-20">
       <MaxWidthWrapper>
         <div className="px-6 py-14 bg-gray-100 rounded-3xl">
           <h2 className="font-extrabold text-4xl text-center mb-14">BROWSE BY DRESS STYLE</h2>  
-          <div className="grid grid-cols-12 grid-rows-12 gap-4">
-            <div className="max-lg:col-span-12 col-span-4 row-span-12 bg-white rounded-xl">1</div>
-            <div className="max-lg:col-span-12 col-span-8 row-span-12 bg-white rounded-xl">2</div>
-            <div className="max-lg:col-span-12 col-span-8 row-span-12 bg-white rounded-xl">3</div>
-            <div className="max-lg:col-span-12 col-span-4 row-span-12 bg-white rounded-xl">4</div>
+          <div className="grid grid-cols-12 gap-6">
+
+
+          {categories.map((category: string, index) => (
+          <div className="max-lg:col-span-12 col-span-4 h-[400px]  rounded-xl relative hover:scale-105 transition-all">
+          <Link href={`/categories/${category}`}>
+            <Image src={images[index]} alt={category} className="object-cover rounded-xl h-[100%]"/>
+            <h2 className="absolute top-2/4 left-6 text-white text-4xl font-extrabold" style={{textShadow:'6px 2px 6px black'}}>{category}</h2>
+          </Link>
+        </div>
+        ))}
+
+              
+
+            
           </div>
         </div> 
       </MaxWidthWrapper>
@@ -124,7 +151,7 @@ export default function Home() {
 
     {/*-------------------- How Happy Customers section --------------------------------------- */}
 
-    <section className="pb-52 max-lg:pb-64">
+    <section >
       <MaxWidthWrapper> 
 
         <Carousel>
@@ -161,3 +188,4 @@ export default function Home() {
    </div>
   );
 }
+
