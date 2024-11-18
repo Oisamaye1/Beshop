@@ -6,6 +6,7 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import ProductCard from '@/components/productCard'
 import Link from 'next/link'
 import { Skeleton } from '@/components/ui/skeleton'
+import Loader from '@/components/loader'
 
 interface Product {
   id: number;
@@ -48,49 +49,17 @@ const CategoriesUI: React.FC = () => {
     fetchProducts();
   }, []);
 
-  if (loading) return(
-    <div className="grid grid-cols-12 justify-between items-center mb-10 gap-2 ">
-
-      <div className='col-span-3 max-lg:col-span-6'>
-        <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-[100%]" />
-          <Skeleton className="h-4 w-[100%]" />
-        </div>
-      </div>
-      <div className='col-span-3 max-lg:col-span-6'>
-        <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-[100%]" />
-          <Skeleton className="h-4 w-[100%]" />
-        </div>
-      </div>
-      <div className='col-span-3 max-lg:col-span-6'>
-        <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-[100%]" />
-          <Skeleton className="h-4 w-[100%]" />
-        </div>
-      </div>
-      <div className='col-span-3 max-lg:col-span-6'>
-        <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-[100%]" />
-          <Skeleton className="h-4 w-[100%]" />
-        </div>
-      </div>
-     
-      
-    </div>
+  if (loading) return (
+    <Loader/>
   );
   if (error) return <p>Error: {error}</p>;
 
 
   return (
 
-    <section className="pt-24 bg-slate-200 pb-72 max-lg:mb-56">
+    <section className="pt-24 bg-slate-50">
       <MaxWidthWrapper className="">
-        <div className="grid grid-cols-4 gap-4 mb-14">
+        <div className="grid grid-cols-4 gap-4 pb-14">
             {filteredProducts.map((product)=>
            
             <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all bg-white shadow-sm border border-slate-200 rounded-lg p-4 cursor-pointer">

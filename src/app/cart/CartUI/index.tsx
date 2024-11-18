@@ -19,6 +19,7 @@ import React, { useEffect, useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton'
 import Loader from '@/components/loader'
 
+
 interface Product {
     id: number;
     title: string;
@@ -27,11 +28,17 @@ interface Product {
     discount?: number;
     popular? : string;
   }
-  const PopularProductsUI: React.FC = () => {
+  const CartUI: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-  
+
+
+
+
+    
+       
+
     useEffect(() => {
       const fetchProducts = async () => {
         setLoading(true);
@@ -58,17 +65,18 @@ interface Product {
     if (loading) return (
       <Loader/>
     );
-
     if (error) return <p>Error: {error}</p>;
 
 
+
+
   return (
-    <div className='bg-slate-50 '>
+    <div className='bg-slate-50'>
     <section className='pt-20 '>
         <MaxWidthWrapper>
         <div className="grid grid-cols-4 gap-4 pb-14">
-            {products.map((product)=>( product.popular &&
-                <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all bg-white shadow-sm border border-slate-200 rounded-lg p-4 cursor-pointer">
+            {products.map((product)=>( product.discount &&
+                <div className="max-lg:col-span-2 flex relative justify-center hover:scale-105 transition-all bg-white shadow-sm border border-slate-200 rounded-lg p-4 cursor-pointer">
                 <Link href={`/products/${product.id}`}>
                   <div className='flex flex-col gap-y-2 max-lg:gap-y-1 '>
                       <div className='h-60'>
@@ -77,13 +85,17 @@ interface Product {
                       <ProductCard key={product.id} id={product.id} title={product.title} price={product.price}/> 
                   </div>
                 </Link>
+                <span className='absolute h-10 w-16 bg-red-600 text-white flex items-center justify-center top-0 rounded-lg right-0'>Sale</span>
               </div>
             ))}
         </div>
         </MaxWidthWrapper>
     </section>
+
+   
     </div>
   )
 }
 
-export default PopularProductsUI
+
+export default CartUI

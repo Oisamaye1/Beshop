@@ -6,9 +6,10 @@ import { Facebook, Github, IdCard, Instagram, Twitter } from 'lucide-react'
 import Link from 'next/link'
 
 const Footer = () => {
-  return (
+  return (<>
+    <div className='pb-52 max-lg:pb-64 bg-slate-50'></div>
     <section className='bg-slate-200'>
-
+        
       <MaxWidthWrapper >
         <div className='bg-black text-white py-20 px-10 grid grid-cols-5 items-center lg:gap-6 max-lg:gap-y-6 relative -top-32 max-lg:-top-48 rounded-3xl'>
             <h2 className='text-4xl font-extrabold col-span-3 max-lg:col-span-5'>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
@@ -93,6 +94,7 @@ const Footer = () => {
         
       </MaxWidthWrapper>
     </section>
+    </>
   )
 }
 

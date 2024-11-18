@@ -40,7 +40,7 @@ export default async function Navbar() {
 
               <div className="text-slate-600 text-base col-span-5 flex justify-center">
                 <ul className="flex gap-8 lg:gap-4 items-center max-lg:hidden">
-                  <Link href="#"><li>On Sale</li></Link>
+                  <Link href="/onsale"><li>On Sale</li></Link>
                   <Link href="/popular"><li>Popular</li></Link>
                   <Link href="#"><li>Brands</li></Link>
                 </ul>
@@ -52,7 +52,7 @@ export default async function Navbar() {
               </div>
               
               <div className="flex gap-4 col-span-1 items-center justify-end">
-                <ShoppingCart />
+                <Link href={'/cart'}><ShoppingCart /></Link>
                 <DropdownMenu>
                 <DropdownMenuTrigger><CircleUserRound /></DropdownMenuTrigger>
                 <DropdownMenuContent>

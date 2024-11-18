@@ -30,6 +30,7 @@ import Link from "next/link";
 import ProductList from "@/components/products";
 import { Skeleton } from "@/components/ui/skeleton";
 import CategoryLinks from "@/components/categories-link";
+import PopularProductsUI from "./popular/PopularUI";
 
 
 async function getCategories() {
@@ -110,13 +111,13 @@ export default async function Home() {
     {/*-------------------- Top Selling section --------------------------------------- */}
 
     <section className="mt-24">
-      <MaxWidthWrapper className="">
+      
         <h2 className="font-extrabold text-4xl text-center mb-16">TOP SELLING</h2>
-          <ProductList />
+          <PopularProductsUI />
         <div className="flex flex-col items-center pb-24">
           <Button asChild variant="outline" className="w-2/12 max-md:w-4/12 bg-transparent"><Link href={'/products'}>View All</Link></Button>
         </div>   
-      </MaxWidthWrapper>
+     
     </section>
 
 
@@ -150,7 +151,7 @@ export default async function Home() {
 
     {/*-------------------- How Happy Customers section --------------------------------------- */}
 
-    <section className="pb-52 max-lg:pb-64">
+    <section >
       <MaxWidthWrapper> 
 
         <Carousel>

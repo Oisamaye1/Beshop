@@ -16,6 +16,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import ReviewCard from '@/components/ReviewCard'
 import { Skeleton } from '@/components/ui/skeleton'
 import ProductFilter from '@/components/categories-link'
+import Loader from '@/components/loader'
 
 
 
@@ -34,9 +35,12 @@ interface Product {
   }
 
 
+
+
 const ProductUI = () => {
-    const params = useParams();
-    const {id} = params;
+  const params = useParams();
+  const {id} = params;
+
 
     const [quantity, quantityState] = useState(0);
 
@@ -52,6 +56,38 @@ const ProductUI = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+
+
+       // State to hold the array of numbers
+       const [numbers, setNumbers] = useState<string[]>([]);
+
+
+       // Load numbers from localStorage on initial render
+       useEffect(() => {
+       const storedNumbers = localStorage.getItem("numbers");
+       if (storedNumbers) {
+         setNumbers(JSON.parse(storedNumbers)); // Parse the stringified array
+       }
+       console.log(storedNumbers)
+       }, []);
+   
+       // Save numbers to localStorage whenever they change
+       useEffect(() => {
+       localStorage.setItem("numbers", JSON.stringify(numbers));
+       }, [numbers]);
+   
+       const GetNewNumberAsString = (): string => {
+         const number = id;
+         console.log(number.toString()) 
+         return number.toString();
+       };
+
+       const addNumber = () => {
+        const newNumber = GetNewNumberAsString(); // Get a new number (as a string) from the external file
+        setNumbers([...numbers, newNumber]); // Add the new string number to the array
+        };
+    
+       
   
     useEffect(() => {
       const fetchProducts = async () => {
@@ -77,43 +113,14 @@ const ProductUI = () => {
     }, []);
   
     if (loading) return(
-      <div className="grid grid-cols-12 justify-between items-center mb-10 gap-2 ">
-
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-       
-        
-      </div>
+      <Loader/>
     );
     if (error) return <p>Error: {error}</p>;
 
 
+     
+
+  
 
 
   return (
@@ -123,7 +130,7 @@ const ProductUI = () => {
         <MaxWidthWrapper>
             {
                 products.map((product)=>{
-
+                  
                     if (!product) return <p>Product not found</p>;
                     return(
 
@@ -161,7 +168,7 @@ const ProductUI = () => {
                                 <h4>{quantity}</h4>
                                 <Plus className='cursor-pointer' onClick={addQuantity}/>
                                 </div>
-                                <Button className='col-span-2 h-12 rounded-full'>Add to Cart</Button>
+                                <Button className='col-span-2 h-12 rounded-full' onClick={addNumber} >Add to Cart</Button>
                             </div>
 
 
@@ -246,4 +253,5 @@ const ProductUI = () => {
   )
 }
 
-export default ProductUI
+
+export  default ProductUI
