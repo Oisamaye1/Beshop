@@ -3,18 +3,13 @@
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
-import ProductCard from '@/components/productCard'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import productImage from "@/../public/prodimg.svg"
-import Image from 'next/image'
-import { Minus, Plus, Star } from 'lucide-react'
+import { Minus, Plus } from 'lucide-react'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import ReviewCard from '@/components/ReviewCard'
-import { Skeleton } from '@/components/ui/skeleton'
 import ProductFilter from '@/components/categories-link'
 import Loader from '@/components/loader'
 

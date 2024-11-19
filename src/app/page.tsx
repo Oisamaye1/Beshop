@@ -14,9 +14,7 @@ import laptop from "@/../public/laptop.jpg"
 import mobile from "@/../public/phone.jpg"
 import gaming from "@/../public/gaming.jpg"
 import audio from "@/../public/audio.jpg"
-import ProductCard from "@/components/productCard";
 import ReviewCard from "@/components/ReviewCard";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import * as React from "react";
 import {
   Carousel,
@@ -25,11 +23,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { products } from "@/components/data";
 import Link from "next/link";
 import ProductList from "@/components/products";
-import { Skeleton } from "@/components/ui/skeleton";
-import CategoryLinks from "@/components/categories-link";
 import PopularProductsUI from "./popular/PopularUI";
 
 

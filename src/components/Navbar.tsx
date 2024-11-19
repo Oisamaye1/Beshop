@@ -3,15 +3,10 @@ import MaxWidthWrapper from './MaxWidthWrapper'
 import Link from 'next/link'
 import { Input } from './ui/input'
 import {ChevronDown, CircleUserRound,  Menu, Search, ShoppingCart,  } from 'lucide-react'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from './ui/dropdown-menu'
-import { Button } from './ui/button'
-import { Label } from "@/components/ui/label"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu'
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
