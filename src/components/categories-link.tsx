@@ -17,10 +17,6 @@ interface Product {
   popular?: string;
 }
 
-type FilterProp = {
-  property: string;
-}
-
 
 const ProductFilter = () => {
   const [products, setProducts] = useState<Product[]>([]);

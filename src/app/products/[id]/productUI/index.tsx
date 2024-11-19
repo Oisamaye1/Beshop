@@ -12,6 +12,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import ReviewCard from '@/components/ReviewCard'
 import ProductFilter from '@/components/categories-link'
 import Loader from '@/components/loader'
+import Image from 'next/image'
 
 
 
@@ -124,17 +125,17 @@ const ProductUI = () => {
     <section className='py-32 bg-white'>
         <MaxWidthWrapper>
             {
-                products.map((product)=>{
-                  
+                products.map((product)=>{ 
+                    <span key={product.id}></span>
                     if (!product) return <p>Product not found</p>;
                     return(
 
                         product.id.toString() === id && 
                         (
-                        <div className='grid grid-cols-2 gap-x-4' key={product.id}>
+                        <div className='grid grid-cols-2 gap-x-4' >
 
                             <div className='col-span-1 max-lg:col-span-2 max-lg:mb-10 relative p-10'>
-                                <img src={product.image} alt={product.title} className='w-[100%]' loading='lazy' />
+                                <Image src={product.image} alt={product.title} width={100} height={100} unoptimized className='w-[100%]' loading='lazy' />
                             </div>
 
                             <div className='col-span-1 max-lg:col-span-2'>
@@ -176,7 +177,9 @@ const ProductUI = () => {
 
                         
                     )
+                    
                 })
+                
             }
         </MaxWidthWrapper>
     </section>
@@ -187,7 +190,7 @@ const ProductUI = () => {
         <MaxWidthWrapper className='mt-20'>
             {products.map((product)=>
                 product.id.toString() === id &&
-                (<Tabs defaultValue="ratings" className="w-full gap-3 ">
+                (<Tabs defaultValue="ratings" className="w-full gap-3 " key={product.id}>
                     <TabsList className='w-full justify-evenly h-12 '>
                         <TabsTrigger value="product details" className='w-full font-bold py-2'>Product Details</TabsTrigger>
                         <TabsTrigger value="ratings" className='w-full font-bold py-2'>Ratings and Reviews</TabsTrigger>
