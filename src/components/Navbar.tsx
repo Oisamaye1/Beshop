@@ -11,18 +11,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
- 
-const SHEET_SIDES = ["left"] as const
- 
-type SheetSide = (typeof SHEET_SIDES)[number]
-async function getCategories() {
-  return ["tv", "audio", "laptop", "mobile", "gaming", "appliances"];
-}
 
 
 
 export default async function Navbar() {
-  const categories = await getCategories();
 
   return (
     <div className="bg-white py-5 sticky top-0 z-50 ">
