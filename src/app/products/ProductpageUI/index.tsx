@@ -45,9 +45,9 @@ interface Product {
       fetchProducts();
     }, []);
   
-    if (loading) return <>
+    if (loading) return <div>
     <Loader />
-    </>;
+    </div>;
     if (error) return <p>Error: {error}</p>;
 
 
