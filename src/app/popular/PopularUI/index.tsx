@@ -1,22 +1,9 @@
 'use client'
-
-import { useParams } from 'next/navigation'
-import { products } from '@/components/data'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import ProductCard from '@/components/productCard'
-import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import productImage from "@/../public/prodimg.svg"
 import Image from 'next/image'
-import { Minus, Plus, Star } from 'lucide-react'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Label } from '@/components/ui/label'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
-import ReviewCard from '@/components/ReviewCard'
-import ProductList from '@/components/products'
 import React, { useEffect, useState } from 'react';
-import { Skeleton } from '@/components/ui/skeleton'
 import Loader from '@/components/loader'
 
 interface Product {
@@ -72,7 +59,7 @@ interface Product {
                 <Link href={`/products/${product.id}`}>
                   <div className='flex flex-col gap-y-2 max-lg:gap-y-1 '>
                       <div className='h-60'>
-                          <img src={product.image} alt={product.title} className='size-full object-contain' />
+                          <Image src={product.image} alt={product.title} width={100} height={100} unoptimized className='size-full object-contain' />
                       </div>         
                       <ProductCard key={product.id} id={product.id} title={product.title} price={product.price}/> 
                   </div>

@@ -5,8 +5,8 @@ import React, { useEffect, useState } from 'react'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import ProductCard from '@/components/productCard'
 import Link from 'next/link'
-import { Skeleton } from '@/components/ui/skeleton'
 import Loader from '@/components/loader'
+import Image from 'next/image'
 
 interface Product {
   id: number;
@@ -66,7 +66,7 @@ const CategoriesUI: React.FC = () => {
                 <Link href={`/products/${product.id}`}>
                     <div className='flex flex-col gap-y-2 max-lg:gap-y-1'>
                         <div className='h-60'>
-                            <img src={product.image} alt={product.title} className='size-full object-contain' />
+                            <Image src={product.image} alt={product.title} width={100} height={100} unoptimized className='size-full object-contain' />
                         </div>
                         <ProductCard key={product.id} id={product.id} title={product.title} price={product.price}/>
                     </div>
