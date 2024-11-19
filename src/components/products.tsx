@@ -56,7 +56,7 @@ interface Product {
           <Link href={`/products/${product.id}`}>
             <div className='flex flex-col gap-y-2 max-lg:gap-y-1 items-end'>
                 <div className='w-[100%]'>
-                    <Image src={product.image} alt={product.title} className='size-full' width={100} height={100} />
+                    <Image src={product.image} alt={product.title} className='size-full' unoptimized width={100} height={100} />
                 </div>
                 <ProductCard key={product.id} id={product.id} title={product.title} price={product.price}/>
             </div>
