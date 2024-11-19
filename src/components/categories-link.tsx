@@ -3,6 +3,7 @@ import Link from "next/link";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import ProductCard from "./productCard";
 import { Skeleton } from "./ui/skeleton";
+import Image from "next/image";
 
 
 
@@ -94,11 +95,11 @@ const ProductFilter = () => {
             {products.map((product)=>(
               product.popular &&
 
-            <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all bg-white shadow-sm border border-slate-200 rounded-lg p-4 cursor-pointer">
+            <div key={product.id} className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all bg-white shadow-sm border border-slate-200 rounded-lg p-4 cursor-pointer">
                 <Link href={`/products/${product.id}`}>
                     <div className='flex flex-col gap-y-2 max-lg:gap-y-1'>
                         <div className='h-60'>
-                            <img src={product.image} alt={product.title} className='size-full object-contain'  />
+                            <Image src={product.image} alt={product.title} unoptimized width={100} height={100} className='size-full object-contain'  />
                         </div>
                         <ProductCard key={product.id} id={product.id} title={product.title} price={product.price}/>
                     </div>

@@ -131,7 +131,7 @@ const ProductUI = () => {
 
                         product.id.toString() === id && 
                         (
-                        <div className='grid grid-cols-2 gap-x-4'>
+                        <div className='grid grid-cols-2 gap-x-4' key={product.id}>
 
                             <div className='col-span-1 max-lg:col-span-2 max-lg:mb-10 relative p-10'>
                                 <img src={product.image} alt={product.title} className='w-[100%]' loading='lazy' />

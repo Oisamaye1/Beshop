@@ -127,7 +127,7 @@ export default async function Home() {
 
 
           {categories.map((category: string, index) => (
-          <div className="max-lg:col-span-12 col-span-4 h-[400px]  rounded-xl relative hover:scale-105 transition-all">
+          <div className="max-lg:col-span-12 col-span-4 h-[400px]  rounded-xl relative hover:scale-105 transition-all" key={index}>
           <Link href={`/categories/${category}`}>
             <Image src={images[index]} alt={category} className="object-cover rounded-xl h-[100%]"/>
             <h2 className="absolute top-2/4 left-6 text-white text-4xl font-extrabold" style={{textShadow:'6px 2px 6px black'}}>{category}</h2>
