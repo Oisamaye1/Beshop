@@ -28,12 +28,24 @@ interface Product {
     discount?: number;
     popular? : string;
   }
+
+  export const GetNewNumberAsString = (e:string): string => {
+    const number = e;
+    console.log(number.toString()) 
+    return number.toString();
+  };
+
   const CartUI: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
+    
 
+    // const addNumber = () => {
+    //  const newNumber = GetNewNumberAsString(); // Get a new number (as a string) from the external file
+    //  setNumbers([...numbers, newNumber]); // Add the new string number to the array
+    //  };
 
 
     
