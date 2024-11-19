@@ -126,13 +126,11 @@ const ProductUI = () => {
         <MaxWidthWrapper>
             {
                 products.map((product)=>{ 
-                    <span key={product.id}></span>
-                    if (!product) return <p>Product not found</p>;
-                    return(
+                   return (
 
                         product.id.toString() === id && 
                         (
-                        <div className='grid grid-cols-2 gap-x-4' >
+                        <div className='grid grid-cols-2 gap-x-4' key={product.id}>
 
                             <div className='col-span-1 max-lg:col-span-2 max-lg:mb-10 relative p-10'>
                                 <Image src={product.image} alt={product.title} width={100} height={100} unoptimized className='w-[100%]' loading='lazy' />
@@ -176,8 +174,8 @@ const ProductUI = () => {
                         ) 
 
                         
-                    )
-                    
+                   
+                   )
                 })
                 
             }
