@@ -55,7 +55,7 @@ interface Product {
         <MaxWidthWrapper>
         <div className="grid grid-cols-4 gap-4 pb-14">
             {products.map((product)=>( product.popular &&
-                <div className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all bg-white shadow-sm border border-slate-200 rounded-lg p-4 cursor-pointer">
+                <div key={product.id} className="max-lg:col-span-2 flex justify-center hover:scale-105 transition-all bg-white shadow-sm border border-slate-200 rounded-lg p-4 cursor-pointer">
                 <Link href={`/products/${product.id}`}>
                   <div className='flex flex-col gap-y-2 max-lg:gap-y-1 '>
                       <div className='h-60'>
