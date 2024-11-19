@@ -5,6 +5,7 @@ import ProductCard from './productCard';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Skeleton } from "@/components/ui/skeleton"
+import Loader from './loader';
 
 
 interface Product {
@@ -43,39 +44,7 @@ interface Product {
     }, []);
   
     if (loading) return(
-      <div className="grid grid-cols-12 justify-between items-center mb-10 gap-2 ">
-
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-        <div className='col-span-3 max-lg:col-span-6'>
-          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[100%]" />
-            <Skeleton className="h-4 w-[100%]" />
-          </div>
-        </div>
-       
-        
-      </div>
+      <Loader/>
     );
     if (error) return <p>Error: {error}</p>;
 
@@ -87,7 +56,7 @@ interface Product {
           <Link href={`/products/${product.id}`}>
             <div className='flex flex-col gap-y-2 max-lg:gap-y-1 items-end'>
                 <div className='w-[100%]'>
-                    <img src={product.image} alt={product.title} className='size-full' />
+                    <Image src={product.image} alt={product.title} className='size-full' unoptimized width={100} height={100} />
                 </div>
                 <ProductCard key={product.id} id={product.id} title={product.title} price={product.price}/>
             </div>
